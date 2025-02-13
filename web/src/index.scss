@@ -1,11 +1,11 @@
-$mainColor: #22232c;
-$textColor: #c1c2c5;
-$mainFont: Roboto;
+$mainColor: #1e1e2f;
+$textColor: #e0e0e0;
+$mainFont: 'Arial', sans-serif;
 
-$secondaryColor: rgba(12, 12, 12, 0.4);
-$secondaryColorHighlight: #33343F;
-$secondaryColorLight: rgba(0, 0, 0, 0.5);
-$secondaryColorDark: rgba(12, 12, 12, 0.8);
+$secondaryColor: rgba(30, 30, 47, 0.8);
+$secondaryColorHighlight: #2e2e4f;
+$secondaryColorLight: rgba(30, 30, 47, 0.5);
+$secondaryColorDark: rgba(30, 30, 47, 0.9);
 
 $gridCols: 5;
 $gridRows: 5;
@@ -15,12 +15,12 @@ $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gr
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
     'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;
-  background: none !important;
+  background: #121212 !important;
   overflow: hidden !important;
   user-select: none;
 }
@@ -53,7 +53,7 @@ input[type='number']::-webkit-outer-spin-button {
 .app-wrapper {
   height: 100%;
   width: 100%;
-  color: white;
+  color: $textColor;
 }
 
 .context-menu-list {
@@ -121,7 +121,6 @@ button:active {
   justify-content: center;
   align-items: center;
   height: 100%;
-
   gap: 20px;
 }
 
@@ -253,21 +252,28 @@ button:active {
   color: grey !important;
 }
 
-// Dialog is used fro useful controls window
-
+// Dialog is used for useful controls window
 
 // inventory grids
 .inventory-grid-wrapper {
   display: flex;
   flex-direction: column;
   gap: calc($gridGap * 2);
+  padding: 10px;
+  background-color: rgba(30, 30, 47, 0.8);
+  border-radius: 8px;
 }
+
 .inventory-grid-header-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 5px 10px;
+  background-color: rgba(30, 30, 47, 0.9);
+  border-radius: 8px;
   p {
     font-size: 16px;
+    color: $textColor;
   }
 }
 
@@ -278,32 +284,44 @@ button:active {
   grid-auto-rows: $gridSize + 0.22vh;
   gap: $gridGap;
   overflow-y: scroll;
+  padding: 10px;
+  background-color: rgba(30, 30, 47, 0.8);
+  border-radius: 8px;
 }
 
 // inventory slots
 .inventory-slot {
-  background-color: $secondaryColor;
+  background-color: rgba(47, 47, 67, 0.8);
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 2.5%;
+  border-radius: 8px;
   image-rendering: -webkit-optimize-contrast;
   position: relative;
-  background-size: 7vh;
+  background-size: 6vh;
   color: $textColor;
-  border-color: rgba(0, 0, 0, 0.2);
-  border-style: inset;
-  border-width: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: rgba(47, 47, 67, 0.6);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    background-color: rgba(47, 47, 67, 0.9);
+    transform: translateY(2px);
+  }
 }
 
 .inventory-slot-label-box {
-  background-color: $mainColor;
+  background-color: rgba(30, 30, 47, 0.9);
   color: $textColor;
   text-align: center;
-  border-bottom-left-radius: 0.25vh;
-  border-bottom-right-radius: 0.25vh;
-  border-top-color: rgba(0, 0, 0, 0.2);
-  border-top-style: inset;
-  border-top-width: 1px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 2px 3px;
 }
 
 .inventory-slot-label-text {
@@ -311,18 +329,16 @@ button:active {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 2px 3px;
   font-weight: 400;
   font-family: $mainFont;
   font-size: 12px;
 }
 
 .inventory-slot-number {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   color: black;
   height: 12px;
-  border-top-left-radius: 0.25vh;
-  border-bottom-right-radius: 0.25vh;
+  border-radius: 5px;
   padding: 3px;
   font-size: 12px;
   font-family: $mainFont;
@@ -382,7 +398,6 @@ button:active {
     text-shadow: 0.1vh 0.1vh 0 rgba(0, 0, 0, 0.7);
   }
 }
-
 
 .tooltip-wrapper {
   pointer-events: none;
@@ -513,7 +528,7 @@ button:active {
   background: rgba(0, 0, 0, 0.4);
   border: 1px inset rgba(0, 0, 0, 0.1);
   height: 0.8vh;
-  border-radius: 5%;
+  border-radius: 5px;
   overflow: hidden;
 }
 
